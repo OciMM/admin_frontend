@@ -1,0 +1,276 @@
+/* с Menu.css */
+menu {
+    height: 100vh;
+}
+
+.menu-block {
+    justify-content: center;
+
+    background-color: #d0d0d0;
+    height: 100%;
+
+    margin: 0 60px;
+
+    border-radius: 10px;
+    border: 1px solid #000;
+}
+
+.menu-ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+.menu-ul li:not(:last-child) {
+    border-bottom: 1px solid #000;
+}
+
+.menu-ul li {
+    padding: 0, 50px;
+}
+
+/* с Creatives.css */
+main {
+    height: 100vh;
+}
+
+
+.Main-root {
+    background: #d0d0d0;
+    color: #000;
+
+    border-radius: 10px;
+    border: 1px solid #000;
+}
+
+.Middle-root {
+    text-align: center;
+}
+
+.creative-info {
+    text-align: center;
+}
+
+.creative-info:not(:last-child) {
+    border-bottom: 1px solid #000;
+}
+
+.single-block-info:not(:last-child) {
+    border-right: 1px solid #000;
+}
+
+.user-button {
+    border: 1px solid #000;
+    border-radius: 25px;
+}
+
+.Main-Info {
+    background: #d0d0d0;
+    border-radius: 20px;
+
+    height: 50px;
+}
+
+.Main-Info-Users {
+    background: #ffffff;
+    border-radius: 20px;
+
+    height: 50px;
+}
+
+.Main-Info {
+    margin-bottom: 30px;
+}
+
+.info-sgl {
+    border-right: 1px solid #000;
+}
+
+/* SingleCreatives.css */
+.High-root {
+    border-bottom: 1px solid #000;
+}
+
+.Middle-root {
+    border-bottom: 1px solid #000;
+}
+
+.buttons-status {
+    text-align: center;
+}
+
+/* filters.css */
+.filters-data {
+    border-right: 1px solid #000;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+}
+
+.data-root:not(:last-child) {
+    border-bottom: 1px solid #000;
+}
+
+.date-picker {
+    padding: 8px 11px;
+}
+
+.Main-full-root {
+    background: #d0d0d0;
+    color: #000;
+
+    border-radius: 10px;
+    border: 1px solid #000;
+
+    height: 100vh;
+}
+
+/* Notice.css */
+
+.menu-notices-ul {
+    list-style: none;
+    /* text-align: center; */
+    padding: 0;
+    margin: 0 70px;
+}
+
+.menu-notices-ul li:not(:last-child) {
+    border-bottom: 1px solid #080202;
+}
+
+
+
+.Main-full-notice-root {
+    background: #d0d0d0;
+    color: #000;
+
+    border-radius: 10px;
+    border: 1px solid #000;
+
+    height: 100vh;
+}
+
+.auto-notice-buttons {
+    border-bottom: 1px solid #000;
+}
+
+.auto-notice-button {
+    border-right: 1px solid #000;
+}
+
+.Text-root {
+    margin: 10px 80px;
+}
+
+.Media-root {
+    margin: 10px 80px;
+}
+
+.Date-root {
+    margin: 10px 80px;
+}
+
+.Source-root {
+    margin: 10px 80px;
+}
+
+.Society-root {
+    margin: 10px 80px;
+}
+
+.Whom-root {
+    margin: 10px 80px;
+}
+
+
+/* Publications.css */
+.square-radio {
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .square-radio input[type="checkbox"] {
+    display: none;
+  }
+  
+  .square-radio label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 4px;
+    transition: transform 0.2s ease-in-out; /* Анимация для изменения масштаба */
+  }
+  
+  .square-radio label::after {
+    content: '\2713'; /* Юникод для галочки */
+    font-size: 14px;
+    color: black;
+    opacity: 0; /* Изначально галочка скрыта */
+    transition: opacity 0.2s ease-in-out; /* Анимация для изменения прозрачности */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .square-radio input[type="checkbox"]:checked + label {
+    transform: scale(1.1); /* Небольшое увеличение при нажатии */
+  }
+  
+  .square-radio input[type="checkbox"]:checked + label::after {
+    opacity: 1; /* Появление галочки */
+  }
+
+
+.High-root {
+    border-bottom: 1px solid #000;
+}
+
+.view-button {
+    margin: 30px 30px;
+}
+
+/* Reservation.css */
+
+.Reservation-root {
+    color: #000;
+
+    border-radius: 10px;
+    border: 1px solid #000;
+}
+
+.Reservation-change-root {
+    color: #000;
+
+    height: 100vh;
+
+    border-radius: 10px;
+    border: 1px solid #000;
+}
+
+
+/* other */
+.stat-info {
+    list-style: none;
+    text-align: left;
+}
+
+.Pre-low-root {
+    border-bottom: 1px solid #000;
+}
+
+.Pre-low-root:not(:last-child) {
+    border-right: 1px solid #000;
+}
+
+.Pre-low-root-lock:not(:last-child) {
+    border-right: 1px solid #000;
+}
+
+.Md-root {
+    border: 1px solid #000;
+}
