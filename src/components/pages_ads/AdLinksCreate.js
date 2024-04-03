@@ -8,9 +8,35 @@ import TuneIcon from '@mui/icons-material/Tune'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 
 import '/Storisbro/admin_site/src/styles/Main.css'
+import { API_URL } from '../../api/api'
 
 
 export default class AdLinksCreate extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      linkName: "",  // состояние для хранения названия ссылки
+    };
+  }
+
+  handleInputChange = (event) => {
+    this.setState({ linkName: event.target.value });
+  }
+
+  handleSaveClick = () => {
+    // отправка данных на бэкенд
+    axios.post(`${API_URL}api/ad_links`, {
+      name: this.state.linkName,
+    })
+    .then(response => {
+      // обработка успешного сохранения
+      console.log(response.data);
+    })
+    .catch(error => {
+      // обработка ошибок
+      console.error(error);
+    });
+  } 
       render() {
           return (
               <main>
@@ -27,14 +53,16 @@ export default class AdLinksCreate extends Component {
                         <div className="Middle-root">
                           <Grid mt={2} mb={2} container justifyContent="center">
                             <Grid item lg={8} md={8} xs={10}>
-                              <TextField fullWidth variant="outlined" label="Введите название"></TextField>
+                              <TextField fullWidth variant="outlined" label="Введите название"
+                              value={this.state.linkName}
+                              onChange={this.handleInputChange}></TextField>
                             </Grid>
                           </Grid>
                         </div>
                         <div className="Low-root">
                           <Grid mt={4} container justifyContent="center"> 
                             <Grid item>
-                              <Button variant="contained" size="large" color="success">Сохранить</Button>
+                              <Button variant="contained" size="large" color="success" onClick={this.handleSaveClick}>Сохранить</Button>
                             </Grid>
                           </Grid>
                         </div>

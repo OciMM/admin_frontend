@@ -7,16 +7,16 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import TuneIcon from '@mui/icons-material/Tune'
 
 import '/Storisbro/admin_site/src/styles/Main.css'
+import { API_URL } from '../../api/api'
 
-
-const baseUrl = "https://reqres.in/api/users?page=2"
+// const baseUrl = "https://reqres.in/api/users?page=2"
 
 class UsersBase extends Component {
   constructor(props) {
     super(props)
 
-    axios.get(baseUrl).then((res) => {
-      this.setState({ users: res.data.data, searchResults: res.data.data })
+    axios.get(`${API_URL}api_users/users`).then((res) => {
+      this.setState({ users: res.data, searchResults: res.data })
     })
 
     this.state = {
@@ -71,23 +71,25 @@ class UsersBase extends Component {
                         <div className="creative-info">
                           <Grid container>
                             <Grid className="single-block-info" item lg={2}>
-                              <img src={el.avatar} />
-                              <h6>{el.email}</h6>
+                              <h6>{el.id}</h6>
                             </Grid>
                             <Grid className="single-block-info" item lg={2}>
-                              <h4>{el.id}</h4>
+                              <h4>{el.registration_date}</h4>
+                            </Grid>
+                            <Grid className="single-block-info" item lg={1}>
+                              <h4>{el.replenishment_amount}</h4>
+                            </Grid>
+                            <Grid className="single-block-info" item lg={1}>
+                              <h4>{el.withdrawal_amount}</h4>
                             </Grid>
                             <Grid className="single-block-info" item lg={2}>
-                              <Link to={`/creatives/${el.id}`}><h4>{el.first_name}</h4></Link>
+                              <h4>{el.service_income}</h4>
                             </Grid>
                             <Grid className="single-block-info" item lg={2}>
-                              <h4>{el.last_name}</h4>
-                            </Grid>
-                            <Grid className="single-block-info" item lg={2}>
-                              <h4>{el.email}</h4>
+                              <h4>{el.community_count}</h4>
                             </Grid>
                             <Grid item lg={2}>
-                              <h4>{el.id}</h4>
+                              <h4>{el.creative_count}</h4>
                             </Grid>
                           </Grid>
                         </div>

@@ -6,6 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
 import '/Storisbro/admin_site/src/styles/Main.css'
 import axios from 'axios';
+import { API_URL } from '../../api/api';
 
 
 const CheckPublic = () => {
@@ -14,10 +15,25 @@ const CheckPublic = () => {
 
 
     useEffect(() => {
-        fetch(`https://reqres.in/api/users/${id}`)
+        fetch(`${API_URL}api_communities/communities/${id}`)
             .then(res => res.json())
             .then(data => setPost(data))
     }, [id]);
+
+    const formatDateTime = dateTimeString => {
+        const dateObject = new Date(dateTimeString);
+    
+        const formattedDate = dateObject.toLocaleString('ru-RU', {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        });
+    
+        return formattedDate;
+      };
 
 
     return (
@@ -38,13 +54,13 @@ const CheckPublic = () => {
                                         {post && (
                                             <>
                                                 <Grid className="single-block-info" item lg={4}>
-                                                    <Link to={`/creatives/${id}/details`}><img src={post.data.avatar}></img></Link><h5>{post.data.first_name}</h5>
+                                                    <img alt="file"></img>
                                                 </Grid>
                                                 <Grid className="single-block-info" item lg={4}>
-                                                    <h5>{post.data.last_name}</h5>
+                                                    <h5>{post.name}</h5>
                                                 </Grid>
                                                 <Grid className="single-block-info" item lg={4}>
-                                                    <h5>{post.data.id}</h5>
+                                                    <h5>{formatDateTime(post.date)}</h5>
                                                 </Grid>
                                             </>
                                         )}
