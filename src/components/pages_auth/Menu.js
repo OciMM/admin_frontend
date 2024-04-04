@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import axios from 'axios'
 
-import '/Storisbro/admin_site/src/styles/Main.css'
+import '../../styles/Main.css'
 
 
 export default function Menu() {
