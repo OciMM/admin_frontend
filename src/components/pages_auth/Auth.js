@@ -2,6 +2,8 @@ import { Button, Container, Grid, TextField, Typography } from '@mui/material'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import '../../styles/Main.css'
+
 export default class Auth extends Component {
   render() {
     return (

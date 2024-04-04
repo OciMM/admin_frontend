@@ -4,7 +4,7 @@ import { Button, Checkbox, Container, Grid, Input, TextField, Toolbar, Typograph
 import { Link } from 'react-router-dom'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
-import '/Storisbro/admin_site/src/styles/Main.css'
+import '../../styles/Main.css'
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
