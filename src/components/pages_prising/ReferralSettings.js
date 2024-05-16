@@ -7,11 +7,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import TuneIcon from '@mui/icons-material/Tune'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 
-<<<<<<< HEAD
-import '/Storisbro/admin_site/src/styles/Main.css'
-=======
+// import '/Storisbro/admin_site/src/styles/Main.css'
 import '../../styles/Main.css'
->>>>>>> f302064f1012f1b6198e619f17e0d9b0d626d343
 import { API_URL } from '../../api/api' 
 
 
