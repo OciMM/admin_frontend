@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
-import '/Storisbro/admin_site/src/styles/Main.css'
+import '../../styles/Main.css'
+import { API_URL } from '../../api/api'
 
 export default class TechDocs extends Component {
   
@@ -33,13 +34,6 @@ export default class TechDocs extends Component {
                                     <Button size="large" color="inherit">Настройки.txt</Button>
                                 </li>
                             </ul>
-                        </div>
-                        <div className="Low-root">
-                        <Grid container justifyContent="center" mt={1} mb={1}>
-                                <Grid justifyContent="center" item>
-                                    <Button size="large" variant='contained' color="warning">Бэкап</Button>
-                                </Grid>
-                        </Grid>
                         </div>
                     </div>
                   </div>

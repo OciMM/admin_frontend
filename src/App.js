@@ -61,6 +61,8 @@ import InfoUser from './components/pages_base_users/InfoUser';
 import NoticeUser from './components/pages_base_users/NoticeUser';
 import StatRefferal from './components/pages_prising/StatRefferal';
 
+import ContentTest from './components/pages_contents/ContentTest';
+
 
 function App() {
 
@@ -75,7 +77,7 @@ function App() {
 
         <Route path='creatives' element={<Creatives/>}/>
         <Route path='creatives/filter' element={<FilterCreatives/>} />
-        <Route path='creatives/:id' element={<SingleCreative/>} />
+        <Route path='creatives/:creative_type/:id' element={<SingleCreative/>} />
         <Route path='creatives/:id/status' element={<StatusCreative/>} />
         <Route path='creatives/:id/details' element={<DetailsCreative/>} />
         <Route path='creatives/:id/statistics' element={<StatisticsCreative/>} />
@@ -128,6 +130,7 @@ function App() {
         <Route path='pricing-menu/referral/stat' element={<StatRefferal/>} />
 
         <Route path='tech' element={<TechDocs/>} />
+        <Route path='content' element={<ContentTest/>} />
       </Routes>
     </div>
   );

@@ -23,7 +23,17 @@ export default function DetailsCreative() {
                         </div>
                         
                         <div className="Middle-detail-root">
-                            {/* надо импортировать какую то тестовую информацию для плеере */}
+                            <Grid mt={3} container textAlign="center" justifyContent="center">
+                                <Grid item lg={3}>
+                                    <div>
+                                        <video controls style={{ width: '100%', height: 'calc(80vw * 16 / 9)', maxWidth: 'calc(80vh * 9 / 16)', maxHeight: '80vh' }}>
+                                        <source src='http://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4' type="video/mp4" />
+                                        Ваш браузер не поддерживает воспроизведение видео.
+                                        </video>
+                                    </div>
+                                </Grid>
+                            </Grid>
+                            
                             <Grid mt={3} container textAlign="center" justifyContent="center">
                                 <Grid item lg={3}>
                                     <div className="user-button">

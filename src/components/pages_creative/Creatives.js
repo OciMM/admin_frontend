@@ -2,31 +2,54 @@ import React, { Component, useState } from 'react'
 import axios from 'axios'
 import { Container, Grid, Typography, Toolbar, TextField} from '@mui/material'
 import { Link } from 'react-router-dom'
+import { API_URL } from '../../api/api' 
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import TuneIcon from '@mui/icons-material/Tune'
 
 import '/Storisbro/admin_site/src/styles/Main.css'
 
-
-const baseUrl = "https://reqres.in/api/users?page=2"
+const default_filter_date = "freshest";
+localStorage.setItem('filter_date', default_filter_date)
+const filter_date = localStorage.getItem('filter_date')
+const baseUrl = `${API_URL}api_creatives/all_creatives/${filter_date}`
 
 class Creatives extends Component {
   constructor(props) {
     super(props)
 
     axios.get(baseUrl).then((res) => {
-      this.setState({ users: res.data.data, searchResults: res.data.data })
+      console.log(res.data)
+      this.setState({ users: res.data, searchResults: res.data })
     })
 
     this.state = {
       users: [],
       searchQuery: "",
-      searchResults: []
-
+      searchResults: [],
+      loadedItems: 5, // количество элементов, которые загружаются сначала
     }
 
   }
+
+  componentDidMount() {
+    this.loadData();
+  }
+
+  loadData = () => {
+    const { loadedItems, users } = this.state;
+    const maxItemsToAdd = 20; // Максимальное количество элементов для добавления
+
+    axios.get(baseUrl).then((res) => {
+      const newUsers = res.data.slice(users.length, users.length + loadedItems);
+      this.setState({
+        users: [...users, ...newUsers],
+        searchResults: [...users, ...newUsers],
+        // loadedItems: loadedItems + 5, // увеличиваем количество элементов для следующей загрузки
+        loadedItems: loadedItems + maxItemsToAdd, // Изменение: Увеличиваем количество элементов для следующей загрузки
+      });
+    });
+  };
 
   handleSearch = (event) => {
     const searchQuery = event.target.value;
@@ -34,8 +57,8 @@ class Creatives extends Component {
 
     const filteredUsers = users.filter(user => {
       return (
-        user.first_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        user.id.toString().includes(searchQuery.toLowerCase())
+        user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.user.toString().includes(searchQuery.toLowerCase())
       );
     });
 
@@ -45,6 +68,7 @@ class Creatives extends Component {
 
   render() {
     const { searchQuery, searchResults } = this.state;
+
 
       return (
           <main>
@@ -77,28 +101,29 @@ class Creatives extends Component {
                         <div className="creative-info">
                           <Grid container>
                             <Grid className="single-block-info" item lg={2} xs={2}>
-                              <img src={el.avatar} />
-                              <h6>{el.email}</h6>
+                              <img alt="file" src={el.file} />
                             </Grid>
                             <Grid className="single-block-info" item lg={2} xs={2}>
                               <h4>{el.id}</h4>
                             </Grid>
                             <Grid className="single-block-info" item lg={2} xs={2}>
-                              <Link to={`/creatives/${el.id}`}><h4>{el.first_name}</h4></Link>
+                              <h4>{el.date}</h4>
                             </Grid>
                             <Grid className="single-block-info" item lg={2} xs={2}>
-                              <h4>{el.last_name}</h4>
+                            <Link to={`/creatives/${el.creative_type}/${el.id}`}><h4>{el.status}</h4></Link>
                             </Grid>
                             <Grid className="single-block-info" item lg={2} xs={2}>
-                              <h4>{el.email}</h4>
+                              <h4>{el.name}</h4>
                             </Grid>
                             <Grid item lg={2} xs={2}>
-                              <h4>{el.id}</h4>
+                              <h4>{el.user}</h4>
                             </Grid>
                           </Grid>
                         </div>
                       ))}
                     </div>
+                    {/* Кнопка для загрузки следующих данных */}
+                    <button onClick={this.loadData}>Загрузить еще</button>
                   </div>
                 </Grid>
               </Grid>

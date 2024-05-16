@@ -6,18 +6,19 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
 import '/Storisbro/admin_site/src/styles/Main.css'
 import axios from 'axios';
+import { API_URL } from '../../api/api'; 
 
 
 const SingleCreative = () => {
-    const {id} = useParams();
+    const {id, creative_type} = useParams();
     const [post, setPost] = useState(null);
 
 
     useEffect(() => {
-        fetch(`https://reqres.in/api/users/${id}`)
+        fetch(`${API_URL}api_creatives/all_creatives/${creative_type}/${id}/`)
             .then(res => res.json())
             .then(data => setPost(data))
-    }, [id]);
+    }, [id, creative_type]);
 
 
     return (
@@ -38,13 +39,13 @@ const SingleCreative = () => {
                                         {post && (
                                             <>
                                                 <Grid className="single-block-info" item lg={4}>
-                                                    <Link to={`/creatives/${id}/details`}><img src={post.data.avatar}></img></Link><h5>{post.data.first_name}</h5>
+                                                    <Link to={`/creatives/${id}/details`}><img alt="file" src={post.file}></img></Link><h5>{post.creative_type}</h5>
                                                 </Grid>
                                                 <Grid className="single-block-info" item lg={4}>
-                                                    <h5>{post.data.last_name}</h5>
+                                                    <h5>{post.name}</h5>
                                                 </Grid>
                                                 <Grid className="single-block-info" item lg={4}>
-                                                    <h5>{post.data.id}</h5>
+                                                    <h5>{post.date}</h5>
                                                 </Grid>
                                             </>
                                         )}
