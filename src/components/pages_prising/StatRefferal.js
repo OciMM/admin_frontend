@@ -7,7 +7,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import TuneIcon from '@mui/icons-material/Tune'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 
-import '/Storisbro/admin_site/src/styles/Main.css'
+import '../../styles/Main.css'
 
 
 export default class StatRefferal extends Component {

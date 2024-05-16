@@ -7,7 +7,7 @@ import { API_URL } from '../../api/api'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import TuneIcon from '@mui/icons-material/Tune'
 
-import '/Storisbro/admin_site/src/styles/Main.css'
+import '../../styles/Main.css'
 
 const default_filter_date = "freshest";
 localStorage.setItem('filter_date', default_filter_date)

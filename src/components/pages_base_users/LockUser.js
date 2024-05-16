@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import TuneIcon from '@mui/icons-material/Tune'
 
-import '/Storisbro/admin_site/src/styles/Main.css'
+import '../../styles/Main.css'
 
 
 export default class LockUser extends Component {

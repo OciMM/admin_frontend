@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 
 import { Link, useParams } from 'react-router-dom'
 
+import '../../styles/Main.css'
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 

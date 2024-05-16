@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
-import '/Storisbro/admin_site/src/styles/Main.css'
+import '../../styles/Main.css'
 
 export default class ReservationArchive extends Component {
     constructor(props) {

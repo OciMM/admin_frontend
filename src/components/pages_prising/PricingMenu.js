@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
-import '/Storisbro/admin_site/src/styles/Main.css'
+import '../../styles/Main.css'
 
 export default class PricingMenu extends Component {
   
