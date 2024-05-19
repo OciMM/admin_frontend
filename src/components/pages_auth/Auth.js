@@ -18,13 +18,13 @@ const Auth = () => {
       };
 
     const handleClick = () => {
-        if(validateEmail(login)) {
+        if(validateEmail(login) && password) {
             localStorage.setItem('login', login);
             localStorage.setItem('password', password);
             navigate('/menu');
             console.log('успешный вход');
         } else {
-            console.log('неправильный формат почты');
+            console.log('неправильный формат почты или нет пароля');
         };
     };
 
@@ -49,7 +49,7 @@ const Auth = () => {
                       variant="outlined"
                       name="email"
                       value={login}
-                      setValue={setLogin}
+                      onChange={(e) => setLogin(e.target.value)}
                     />
                   </Grid>
                 </Grid>
@@ -64,7 +64,7 @@ const Auth = () => {
                       type="password"
                       name="password"
                       value={password}
-                      setValue={setPassword}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </Grid>
                 </Grid>
