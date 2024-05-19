@@ -69,8 +69,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<Menu/>}/>
-        <Route path='auth' element={<Auth/>}/>
+        <Route path='menu' element={<Menu/>}/>
+        <Route path='/' element={<Auth/>}/>
         <Route path='auth-new' element={<AuthNewDevice/>}/>
         <Route path='auth-change' element={<AuthChangePassword/>} />
         <Route path='message-change' element={<MessageChange/>} />
