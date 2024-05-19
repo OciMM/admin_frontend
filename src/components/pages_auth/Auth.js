@@ -1,27 +1,33 @@
 import { Button, Container, Grid, TextField, Typography } from '@mui/material';
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import '../../styles/Main.css';
 
-export default class Auth extends Component {
-  constructor(props) {
-    super(props);
+const Auth = () => {
 
-    this.state = {
-      email: "",
-      password: ""
+    const [login, setLogin] = useState("");
+    const [password, setPassword] = useState("");
+
+    const navigate = useNavigate();
+
+    const validateEmail = (email) => {
+        // Регулярное выражение для проверки формата email
+        const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return re.test(String(email).toLowerCase());
+      };
+
+    const handleClick = () => {
+        if(validateEmail(login)) {
+            localStorage.setItem('login', login);
+            localStorage.setItem('password', password);
+            navigate('/menu');
+            console.log('успешный вход');
+        } else {
+            console.log('неправильный формат почты');
+        };
     };
-  }
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  render() {
     return (
       <main>
         <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }} maxWidth="lg">
@@ -42,8 +48,8 @@ export default class Auth extends Component {
                       label="Введите логин"
                       variant="outlined"
                       name="email"
-                      value={this.state.email}
-                      onChange={this.handleChange}
+                      value={login}
+                      setValue={setLogin}
                     />
                   </Grid>
                 </Grid>
@@ -57,8 +63,8 @@ export default class Auth extends Component {
                       variant="outlined"
                       type="password"
                       name="password"
-                      value={this.state.password}
-                      onChange={this.handleChange}
+                      value={password}
+                      setValue={setPassword}
                     />
                   </Grid>
                 </Grid>
@@ -73,7 +79,7 @@ export default class Auth extends Component {
 
                 <Grid container mb={1} justifyContent="center">
                   <Grid item>
-                    <Button color="warning" size="large" variant="contained">Войти</Button>
+                    <Button onClick={handleClick} color="warning" size="large" variant="contained">Войти</Button>
                   </Grid>
                 </Grid>
               </div>
@@ -82,5 +88,6 @@ export default class Auth extends Component {
         </Container>
       </main>
     );
-  }
 }
+
+export default Auth;
