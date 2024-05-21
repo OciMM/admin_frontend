@@ -75,20 +75,20 @@ function App() {
         <Route path='auth-change' element={<AuthChangePassword/>} />
         <Route path='message-change' element={<MessageChange/>} />
 
-        <Route path='creatives' element={<Creatives/>}/>
+        <Route path='menu/creatives' element={<Creatives/>}/>
         <Route path='creatives/filter' element={<FilterCreatives/>} />
         <Route path='creatives/:creative_type/:id' element={<SingleCreative/>} />
         <Route path='creatives/:id/status' element={<StatusCreative/>} />
         <Route path='creatives/:id/details' element={<DetailsCreative/>} />
         <Route path='creatives/:id/statistics' element={<StatisticsCreative/>} />
         
-        <Route path='publics' element={<Publics/>}/>
+        <Route path='menu/publics' element={<Publics/>}/>
         <Route path='publics/filter' element={<FilterPublics/>}/>
         <Route path='publics/:id' element={<CheckPublic/>} />
         <Route path='publics/:id/status' element={<StatusPublic/>} />
         <Route path='publics/:id/statistics' element={<StatisticsPublic/>} />
 
-        <Route path='usersbase' element={<UsersBase/>} />
+        <Route path='menu/usersbase' element={<UsersBase/>} />
         <Route path='usersbase/filter' element={<FilterUsers/>} />
         <Route path='userbase/hy-out' element={<HistoryOut/>} />
         <Route path='userbase/hy-up' element={<HystoryUp/>} />
@@ -97,25 +97,25 @@ function App() {
         <Route path='info' element={<InfoUser/>} />
         <Route path='notice-user' element={<NoticeUser/>} />
 
-        <Route path='notices' element={<Notices/>} />
+        <Route path='menu/notices' element={<Notices/>} />
         <Route path='notices/auto-notices' element={<AutoNotices/>}/>
         <Route path='notices/:autoID' element={<SendAutoNotice/>} />
         <Route path='notices/send-notices' element={<SendNotices/>}/>
 
-        <Route path='statistics' element={<Statistics/>} />
+        <Route path='menu/statistics' element={<Statistics/>} />
         <Route path='statistics/all-statistics' element={<AllStat/>} />
 
-        <Route path='publications' element={<Publications/>} />
+        <Route path='menu/publications' element={<Publications/>} />
         <Route path='publications/publication-settings' element={<PublciationSettings/>} />
         <Route path='publications/reservations' element={<Reservations/>} />
         <Route path='publications/reservations/archive' element={<ReservationArchive/>}/>
         <Route path='publications/reservations/info' element={<InfoReservation/>} />
         <Route path='publications/reservations/change' element={<ChangeReservation/>} />
 
-        <Route path='links' element={<AdLinks/>}/>
+        <Route path='menu/links' element={<AdLinks/>}/>
         <Route path='links/links-create' element={<AdLinksCreate/>} />
 
-        <Route path='pricing-menu' element={<PricingMenu/>} />
+        <Route path='menu/pricing-menu' element={<PricingMenu/>} />
         <Route path='pricing-menu/service-commission' element={<ServiceCommission/>} />
 
         <Route path='pricing-menu/cpm-settings' element={<CPMSettings/>}/>
