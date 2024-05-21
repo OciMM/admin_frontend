@@ -129,7 +129,7 @@ function App() {
 
         <Route path='pricing-menu/referral/stat' element={<StatRefferal/>} />
 
-        <Route path='tech' element={<TechDocs/>} />
+        <Route path='menu/tech' element={<TechDocs/>} />
         <Route path='content' element={<ContentTest/>} />
       </Routes>
     </div>
