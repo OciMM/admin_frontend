@@ -6,7 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
 import '../../styles/Main.css'
 import axios from 'axios';
-import { API_URL } from '../../api/api';
+import { API_URL, API_URL_FOREIGN_API } from '../../api/api';
 
 
 const CheckPublic = () => {
@@ -15,7 +15,7 @@ const CheckPublic = () => {
 
 
     useEffect(() => {
-        fetch(`${API_URL}api_communities/communities/${id}`)
+        fetch(`${API_URL_FOREIGN_API}api_communities/communities/${id}`)
             .then(res => res.json())
             .then(data => setPost(data))
     }, [id]);

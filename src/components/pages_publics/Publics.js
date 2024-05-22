@@ -7,9 +7,9 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import TuneIcon from '@mui/icons-material/Tune'
 
 import '../../styles/Main.css'
-import { API_URL } from '../../api/api'
+import { API_URL, API_URL_FOREIGN_API } from '../../api/api'
 
-const baseUrl = `${API_URL}api_communities/communities`
+const baseUrl = `${API_URL_FOREIGN_API}api_communities/communities`
 
 class Publics extends Component {
     constructor(props) {
