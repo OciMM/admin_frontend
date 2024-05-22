@@ -1,4 +1,5 @@
 import React from 'react';
+import { API_URL_FOREIGN_FRONTEND } from '../../api/api';
 
 const ContentTest = () => {
     const iframeStyle = {
@@ -8,7 +9,7 @@ const ContentTest = () => {
       };
   return (
     <div style={{ width: '100%', height: '100vh', overflow: 'hidden' }}>
-      <iframe src="http://localhost:3001/" title="Фронтенд Проект №1" style={iframeStyle}></iframe>
+      <iframe src={API_URL_FOREIGN_FRONTEND} title="Фронтенд Проект №1" style={iframeStyle}></iframe>
     </div>
   );
 };
