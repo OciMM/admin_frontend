@@ -6,13 +6,52 @@ import { Link } from 'react-router-dom'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import TuneIcon from '@mui/icons-material/Tune'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
+import { API_URL } from '../../api/api'
 
 import '../../styles/Main.css'
 
-export default class SendNotices extends Component {
+const SendNotices = () => {
 
-  render() {
+  const [uid, setUid] = useState("");
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
+  const [checkUser, setCheckUser] = useState(true);
+  const [checkVk, setCheckVk] = useState(false);
+  const [checkEmail, setCheckEmail] = useState(false);
 
+  const [checkUserStr, setCheckUserStr] = useState("");
+  const [checkVkStr, setCheckVkStr] = useState("");
+  const [checkEmailStr, setCheckEmailStr] = useState("");
+
+
+  const handleChangeUser = (event) => {
+    setCheckUser(event.target.checked);
+    setCheckUserStr("true");
+  };
+
+  const handleChangeVK = (event) => {
+    setCheckVk(event.target.checked);
+    setCheckVkStr("true");
+  };
+
+  const handleChangeEmail = (event) => {
+    setCheckEmail(event.target.checked);
+    setCheckEmailStr("true");
+  };
+
+  const handleClick = () => {
+    axios.post(`${API_URL}send_notification/${checkUserStr}/${checkVkStr}/${checkEmailStr}`, { 
+      UID: uid, 
+      title: title,
+      text: text,
+    })
+      .then(response => {
+        console.log("Успешно отправилось уведомление")
+      })
+      .catch(error => {
+        console.error("Ошибка в отправке:", error);
+      });
+  };
 
     return (
       <main>
@@ -27,11 +66,21 @@ export default class SendNotices extends Component {
                             </Toolbar>
                         </div>
                         <div className="Middle-full-root">
+                          <div className="Text-root">
+                              <Grid container>
+                                <Grid item lg={12} md={12} xs={12}>
+                                  <Typography>Тип уведомления</Typography>
+                                  <TextField fullWidth id="outlined-basic" label="Введите текст" variant="outlined" value={title}
+                                    onChange={(e) => setTitle(e.target.value)}/>
+                                </Grid>
+                              </Grid>
+                            </div>
                             <div className="Text-root">
                               <Grid container>
                                 <Grid item lg={12} md={12} xs={12}>
                                   <Typography>Текст уведомлений</Typography>
-                                  <TextField fullWidth id="outlined-basic" label="Введите текст" variant="outlined"/>
+                                  <TextField fullWidth id="outlined-basic" label="Введите текст" variant="outlined" value={text}
+                                    onChange={(e) => setText(e.target.value)}/>
                                 </Grid>
                               </Grid>
                             </div>
@@ -58,9 +107,9 @@ export default class SendNotices extends Component {
                                 <Grid item lg={12} md={12} xs={12}>
                                   <Typography>Источники</Typography>
                                   <Grid container>
-                                    <Grid item><Typography><Checkbox/>ЛК на сервисе</Typography></Grid>
-                                    <Grid item><Typography><Checkbox/>Сообщения Вконтакте</Typography></Grid>
-                                    <Grid item><Typography><Checkbox/>Почта</Typography></Grid>
+                                    <Grid item><Typography><Checkbox checked={checkUser} onChange={handleChangeUser}/>ЛК на сервисе</Typography></Grid>
+                                    <Grid item><Typography><Checkbox checked={checkVk} onChange={handleChangeVK}/>Сообщения Вконтакте</Typography></Grid>
+                                    <Grid item><Typography><Checkbox checked={checkEmail} onChange={handleChangeEmail}/>Почта</Typography></Grid>
                                   </Grid>
                                 </Grid>
                               </Grid>
@@ -76,7 +125,8 @@ export default class SendNotices extends Component {
                                   </Grid>
                                   <Grid container>
                                     <Grid item lg={2}><Typography><Checkbox/>Все</Typography></Grid>
-                                    <Grid item lg={10}><Typography><TextField label="Введите UID"/> Пользователи, у которых минимум 1 креатив в статусе “Активен”</Typography></Grid>
+                                    <Grid item lg={10}><Typography><TextField fullWidth id="outlined-basic" label="Введите UID" variant="outlined" value={uid}
+                                    onChange={(e) => setUid(e.target.value)}/> Пользователи, у которых минимум 1 креатив в статусе “Активен”</Typography></Grid>
                                   </Grid>
                                 </Grid>
                               </Grid>
@@ -99,5 +149,6 @@ export default class SendNotices extends Component {
         </Container>
       </main>
     )
-  }
 }
+
+export default SendNotices;
