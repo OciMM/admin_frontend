@@ -40,7 +40,7 @@ const SendNotices = () => {
   };
 
   const handleClick = () => {
-    axios.post(`${API_URL}send_notification/${checkUserStr}/${checkVkStr}/${checkEmailStr}`, { 
+    axios.post(`${API_URL}send_notification/${checkUserStr}/${checkVkStr}/${checkEmailStr}/`, { 
       UID: uid, 
       title: title,
       text: text,
