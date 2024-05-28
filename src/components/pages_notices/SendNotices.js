@@ -135,7 +135,7 @@ const SendNotices = () => {
                             <div className="Low-root">
                               <Grid container mt={3} mb={4} spacing={3} justifyContent="center">
                                 <Grid item>
-                                  <Button variant="contained" color="warning">Начать отправку</Button>
+                                  <Button variant="contained" color="warning" onClick={handleClick}>Начать отправку</Button>
                                 </Grid>
                                 <Grid item>
                                   <Button variant="contained" color="inherit">Тест</Button>
