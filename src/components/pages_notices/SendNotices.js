@@ -19,24 +19,38 @@ const SendNotices = () => {
   const [checkVk, setCheckVk] = useState(false);
   const [checkEmail, setCheckEmail] = useState(false);
 
-  const [checkUserStr, setCheckUserStr] = useState("");
-  const [checkVkStr, setCheckVkStr] = useState("");
-  const [checkEmailStr, setCheckEmailStr] = useState("");
+  const [checkUserStr, setCheckUserStr] = useState("true");
+  const [checkVkStr, setCheckVkStr] = useState("false");
+  const [checkEmailStr, setCheckEmailStr] = useState("false");
 
 
   const handleChangeUser = (event) => {
     setCheckUser(event.target.checked);
-    setCheckUserStr("true");
+    if(checkUserStr != "true") {
+      setCheckUserStr("true");
+    } if (checkUserStr == "true") {
+      setCheckUserStr("false");
+    };
   };
 
   const handleChangeVK = (event) => {
     setCheckVk(event.target.checked);
-    setCheckVkStr("true");
+    // setCheckVkStr("true");
+    if(checkVkStr != "true") {
+      setCheckUserStr("true");
+    } if (checkVkStr == "true") {
+      setCheckUserStr("false");
+    };
   };
 
   const handleChangeEmail = (event) => {
     setCheckEmail(event.target.checked);
-    setCheckEmailStr("true");
+    // setCheckEmailStr("true");
+    if(checkEmailStr != "true") {
+      setCheckUserStr("true");
+    } if (checkEmailStr == "true") {
+      setCheckUserStr("false");
+    };
   };
 
   const handleClick = () => {
