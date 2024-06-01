@@ -45,7 +45,7 @@ const SendNotices = () => {
   };
 
   const handleClick = () => {
-    if(checkAll) {
+    if(checkAll == false) {
       axios.post(`${API_URL}send_notification/${checkUserStr}/${checkVkStr}/${checkEmailStr}/`, { 
         UID: uid, 
         title: title,
@@ -57,7 +57,7 @@ const SendNotices = () => {
         .catch(error => {
           console.error("Ошибка в отправке:", error);
         });
-    } if(!checkAll) {
+    } if(checkAll) {
       axios.post(`${API_URL_FOREIGN_API}send-notification/bulk-notifications/`, { 
         title: title,
         text: text,
