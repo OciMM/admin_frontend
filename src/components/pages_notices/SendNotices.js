@@ -19,9 +19,9 @@ const SendNotices = () => {
   const [checkVk, setCheckVk] = useState(false);
   const [checkEmail, setCheckEmail] = useState(false);
 
-  const [checkUserStr, setCheckUserStr] = useState(true);
-  const [checkVkStr, setCheckVkStr] = useState(false);
-  const [checkEmailStr, setCheckEmailStr] = useState(false);
+  const [checkUserStr, setCheckUserStr] = useState("true");
+  const [checkVkStr, setCheckVkStr] = useState("false");
+  const [checkEmailStr, setCheckEmailStr] = useState("false");
 
   const handleChangeUser = (event) => {
     setCheckUser(event.target.checked);
