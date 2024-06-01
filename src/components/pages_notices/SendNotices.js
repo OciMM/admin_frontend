@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import TuneIcon from '@mui/icons-material/Tune'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
-import { API_URL } from '../../api/api'
+import { API_URL, API_URL_FOREIGN_API } from '../../api/api'
 
 import '../../styles/Main.css'
 
@@ -22,6 +22,7 @@ const SendNotices = () => {
   const [checkUserStr, setCheckUserStr] = useState("true");
   const [checkVkStr, setCheckVkStr] = useState("false");
   const [checkEmailStr, setCheckEmailStr] = useState("false");
+  const [checkAll, setCheckAll] = useState(false);
 
   const handleChangeUser = (event) => {
     setCheckUser(event.target.checked);
@@ -38,18 +39,36 @@ const SendNotices = () => {
     setCheckEmailStr(event.target.checked ? "true" : "false");
   };
 
+  const handleChangeAll = (event) => {
+    setCheckAll(event.target.checked);
+    setCheckAll(event.target.checked ? true : false);
+  };
+
   const handleClick = () => {
-    axios.post(`${API_URL}send_notification/${checkUserStr}/${checkVkStr}/${checkEmailStr}/`, { 
-      UID: uid, 
-      title: title,
-      text: text,
-    })
-      .then(response => {
-        console.log("Успешно отправилось уведомление")
+    if(checkAll) {
+      axios.post(`${API_URL}send_notification/${checkUserStr}/${checkVkStr}/${checkEmailStr}/`, { 
+        UID: uid, 
+        title: title,
+        text: text,
       })
-      .catch(error => {
-        console.error("Ошибка в отправке:", error);
-      });
+        .then(response => {
+          console.log("Успешно отправилось уведомление")
+        })
+        .catch(error => {
+          console.error("Ошибка в отправке:", error);
+        });
+    } if(!checkAll) {
+      axios.post(`${API_URL_FOREIGN_API}send-notification/bulk-notifications/`, { 
+        title: title,
+        text: text,
+      })
+        .then(response => {
+          console.log("Успешно отправилось уведомление для всех")
+        })
+        .catch(error => {
+          console.error("Ошибка в отправке:", error);
+        });
+    };
   };
 
     return (
@@ -123,7 +142,7 @@ const SendNotices = () => {
                                     <Grid item pr={3}><Typography><Checkbox/>Пользователи, у которых минимум 1 креатив в статусе “Активен”</Typography></Grid>
                                   </Grid>
                                   <Grid container>
-                                    <Grid item lg={2}><Typography><Checkbox/>Все</Typography></Grid>
+                                    <Grid item lg={2}><Typography><Checkbox checked={checkAll} onChange={handleChangeAll}/>Все</Typography></Grid>
                                     <Grid item lg={10}><Typography><TextField fullWidth id="outlined-basic" label="Введите UID" variant="outlined" value={uid}
                                     onChange={(e) => setUid(e.target.value)}/> Пользователи, у которых минимум 1 креатив в статусе “Активен”</Typography></Grid>
                                   </Grid>
