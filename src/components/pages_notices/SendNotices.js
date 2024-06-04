@@ -58,7 +58,7 @@ const SendNotices = () => {
           console.error("Ошибка в отправке:", error);
         });
     } if(checkAll) {
-      axios.post(`${API_URL_FOREIGN_API}send-notification/bulk-notifications/`, { 
+      axios.post(`${API_URL}send_notification/${checkUserStr}/${checkVkStr}/${checkEmailStr}/`, { 
         title: title,
         text: text,
       })
