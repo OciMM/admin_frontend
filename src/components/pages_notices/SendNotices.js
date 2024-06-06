@@ -45,12 +45,16 @@ const SendNotices = () => {
   };
 
   const handleClick = () => {
+    const formData = new FormData();
+    const file = document.getElementById('file').files[0];
+
+    formData.append('title', title);
+    formData.append('text', text);
+    formData.append('file', file);
+
     if(checkAll == false) {
-      axios.post(`${API_URL}send_notification/${checkUserStr}/${checkVkStr}/${checkEmailStr}/`, { 
-        UID: uid, 
-        title: title,
-        text: text,
-      })
+      formData.append('UID', uid);
+      axios.post(`${API_URL}send_notification/${checkUserStr}/${checkVkStr}/${checkEmailStr}/`, formData)
         .then(response => {
           console.log("Успешно отправилось уведомление")
         })
@@ -58,10 +62,7 @@ const SendNotices = () => {
           console.error("Ошибка в отправке:", error);
         });
     } if(checkAll) {
-      axios.post(`${API_URL}send_notification/${checkUserStr}/${checkVkStr}/${checkEmailStr}/`, { 
-        title: title,
-        text: text,
-      })
+      axios.post(`${API_URL}send_notification/${checkUserStr}/${checkVkStr}/${checkEmailStr}/`, formData)
         .then(response => {
           console.log("Успешно отправилось уведомление для всех")
         })
@@ -107,7 +108,9 @@ const SendNotices = () => {
                               <Grid container>
                                 <Grid item lg={12} md={12} xs={12}>
                                   <Typography>Медиавложения</Typography>
-                                  <Input type="file" />
+                                  <form id="upload-form" enctype="multipart/form-data">
+                                    <input type="file" name="file" id="file"/>
+                                  </form>
                                 </Grid>
                               </Grid>
                             </div>
