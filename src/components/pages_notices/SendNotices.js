@@ -23,6 +23,7 @@ const SendNotices = () => {
   const [checkVkStr, setCheckVkStr] = useState("false");
   const [checkEmailStr, setCheckEmailStr] = useState("false");
   const [checkAll, setCheckAll] = useState(false);
+  const [file, setFile] = useState(null);
 
   const handleChangeUser = (event) => {
     setCheckUser(event.target.checked);
@@ -44,9 +45,13 @@ const SendNotices = () => {
     setCheckAll(event.target.checked ? true : false);
   };
 
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
   const handleClick = () => {
     const formData = new FormData();
-    const file = document.getElementById('file').files[0];
+    // const file = document.getElementById('file').files[0];
 
     formData.append('title', title);
     formData.append('text', text);
@@ -109,7 +114,7 @@ const SendNotices = () => {
                                 <Grid item lg={12} md={12} xs={12}>
                                   <Typography>Медиавложения</Typography>
                                   <form id="upload-form" enctype="multipart/form-data">
-                                    <input type="file" name="file" id="file"/>
+                                    <input type="file" name="file" id="file" onChange={handleFileChange}/>
                                   </form>
                                 </Grid>
                               </Grid>
