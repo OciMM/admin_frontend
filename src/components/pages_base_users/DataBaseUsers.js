@@ -73,7 +73,7 @@ class UsersBase extends Component {
                         <div className="creative-info">
                           <Grid container>
                             <Grid className="single-block-info" item lg={2}>
-                              <h6>{el.id}</h6>
+                              <h6>{el.UID}</h6>
                             </Grid>
                             <Grid className="single-block-info" item lg={2}>
                               <h4>{el.registration_date}</h4>
