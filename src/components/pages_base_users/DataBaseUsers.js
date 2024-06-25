@@ -8,7 +8,7 @@ import TuneIcon from '@mui/icons-material/Tune'
 
 // import '/Storisbro/admin_site/src/styles/Main.css'
 import '../../styles/Main.css'
-import { API_URL } from '../../api/api'
+import { API_URL, API_URL_FOREIGN_API } from '../../api/api'
 
 // const baseUrl = "https://reqres.in/api/users?page=2"
 
@@ -16,7 +16,7 @@ class UsersBase extends Component {
   constructor(props) {
     super(props)
 
-    axios.get(`${API_URL}api_users/users`).then((res) => {
+    axios.get(`${API_URL_FOREIGN_API}api_users/users`).then((res) => {
       this.setState({ users: res.data, searchResults: res.data })
       console.log(res.data)
     })
