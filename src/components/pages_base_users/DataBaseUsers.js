@@ -18,6 +18,7 @@ class UsersBase extends Component {
 
     axios.get(`${API_URL}api_users/users`).then((res) => {
       this.setState({ users: res.data, searchResults: res.data })
+      console.log(res.data)
     })
 
     this.state = {
