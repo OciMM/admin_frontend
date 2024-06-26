@@ -62,6 +62,7 @@ import NoticeUser from './components/pages_base_users/NoticeUser';
 import StatRefferal from './components/pages_prising/StatRefferal';
 
 import ContentTest from './components/pages_contents/ContentTest';
+import MenuUID from './components/pages_base_users/MenuUID';
 
 
 function App() {
@@ -89,11 +90,12 @@ function App() {
         <Route path='publics/:id/statistics' element={<StatisticsPublic/>} />
 
         <Route path='menu/usersbase' element={<UsersBase/>} />
+        <Route path='menu/usersbase/:id' element={<MenuUID/>} />
         <Route path='usersbase/filter' element={<FilterUsers/>} />
         <Route path='userbase/hy-out' element={<HistoryOut/>} />
         <Route path='userbase/hy-up' element={<HystoryUp/>} />
-        <Route path='lock' element={<LockUser/>}/>
-        <Route path='warning' element={<WarningUser/>}/>
+        <Route path='lock/:id' element={<LockUser/>}/>
+        <Route path='warning/:id' element={<WarningUser/>}/>
         <Route path='info' element={<InfoUser/>} />
         <Route path='notice-user' element={<NoticeUser/>} />
 

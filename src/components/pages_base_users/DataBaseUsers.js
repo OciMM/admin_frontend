@@ -91,7 +91,7 @@ class UsersBase extends Component {
                               <h4>{el.community_count}</h4>
                             </Grid>
                             <Grid item lg={2}>
-                              <h4>{el.creative_count}</h4>
+                              <Link to={`/menu/usersbase/${el.id}`}><h4>настройки</h4></Link>
                             </Grid>
                           </Grid>
                         </div>
