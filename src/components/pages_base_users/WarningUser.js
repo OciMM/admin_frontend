@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react'
 
 import axios from 'axios'
 import { Container, Grid, Typography, Toolbar, TextField, Button, Input, Checkbox} from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import { API_URL, API_URL_FOREIGN_API } from '../../api/api'
 
@@ -13,6 +13,8 @@ import '../../styles/Main.css'
 
 
 const WarningUser = () => {
+    const {id} = useParams();
+
     const [uid, setUid] = useState("");
     const [title, setTitle] = useState("Предупреждение");
     const [text, setText] = useState("");
@@ -41,7 +43,7 @@ const WarningUser = () => {
     const handleClick = () => {
       let formData = new FormData();
         
-      axios.get(`${API_URL_FOREIGN_API}api_users/users`).then((res) => {
+      axios.get(`${API_URL_FOREIGN_API}api_users/user/${id}`).then((res) => {
         setUid(res.data.UID)
         console.log(res.data)
       })
