@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Container, Grid, Typography, Toolbar, TextField, Button, Input, Checkbox} from '@mui/material'
 import { Link } from 'react-router-dom'
 
-import { API_URL } from '../../api/api'
+import { API_URL, API_URL_FOREIGN_API } from '../../api/api'
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import TuneIcon from '@mui/icons-material/Tune'
@@ -14,7 +14,7 @@ import '../../styles/Main.css'
 
 const WarningUser = () => {
     const [uid, setUid] = useState("");
-    const [title, setTitle] = useState("");
+    const [title, setTitle] = useState("Предупреждение");
     const [text, setText] = useState("");
     const [checkUser, setCheckUser] = useState(true);
     const [checkVk, setCheckVk] = useState(false);
@@ -22,8 +22,6 @@ const WarningUser = () => {
     const [checkUserStr, setCheckUserStr] = useState("true");
     const [checkVkStr, setCheckVkStr] = useState("false");
     const [checkEmailStr, setCheckEmailStr] = useState("false");
-    const [checkAll, setCheckAll] = useState(false);
-    const [file, setFile] = useState(null);
   
     const handleChangeUser = (event) => {
       setCheckUser(event.target.checked);
@@ -42,17 +40,15 @@ const WarningUser = () => {
   
     const handleClick = () => {
       let formData = new FormData();
-  
-      if (file) {
-        formData.append('file', file);
-      }
-  
+        
+      axios.get(`${API_URL_FOREIGN_API}api_users/users`).then((res) => {
+        setUid(res.data.UID)
+        console.log(res.data)
+      })
+
       formData.append('title', title);
       formData.append('text', text);
-  
-      if (!checkAll) {
-        formData.append('UID', uid);
-      }
+      formData.append('UID', uid);
   
       const url = `${API_URL}send_notification/${checkUserStr}/${checkVkStr}/${checkEmailStr}/`;
   
