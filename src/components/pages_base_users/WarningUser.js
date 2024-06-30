@@ -44,7 +44,7 @@ const WarningUser = () => {
       let formData = new FormData();
         
       axios.get(`${API_URL_FOREIGN_API}api_users/user/${id}`).then((res) => {
-        // setUid(res.data.UID)
+        setUid(res.data.UID)
         console.log(res.data)
       })
 
