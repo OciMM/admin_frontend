@@ -95,7 +95,7 @@ class Publics extends Component {
                                 <h4>{this.formatDateTime(el.date)}</h4>
                               </Grid>
                               <Grid className="single-block-info" item lg={2} xs={2}>
-                                <h4>{el.status_of_check}</h4>
+                                <Link to={`/publics/${el.id}`}><h4>{el.status_of_check}</h4></Link>
                               </Grid>
                               <Grid className="single-block-info" item lg={2} xs={2}>
                                 <h4>{el.status_commission}</h4>
@@ -116,3 +116,4 @@ class Publics extends Component {
       }
   }
   export default Publics;
+  
