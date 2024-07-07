@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react'
 import axios from 'axios'
 import { Container, Grid, Typography, Toolbar, TextField} from '@mui/material'
 import { Link } from 'react-router-dom'
-import { API_URL } from '../../api/api' 
+import { API_URL, API_URL_FOREIGN_API } from '../../api/api' 
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import TuneIcon from '@mui/icons-material/Tune'
@@ -12,7 +12,7 @@ import '../../styles/Main.css'
 const default_filter_date = "freshest";
 localStorage.setItem('filter_date', default_filter_date)
 const filter_date = localStorage.getItem('filter_date')
-const baseUrl = `${API_URL}api_creatives/all_creatives/${filter_date}`
+const baseUrl = `${API_URL_FOREIGN_API}api_creatives/all_creatives/${filter_date}`
 
 class Creatives extends Component {
   constructor(props) {
