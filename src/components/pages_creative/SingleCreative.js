@@ -20,7 +20,7 @@ const SingleCreative = () => {
             .then(data => setPost(data))
     }, [id, creative_type]);
 
-
+ 
     return (
         <main>
             <Container maxWidth="lg">

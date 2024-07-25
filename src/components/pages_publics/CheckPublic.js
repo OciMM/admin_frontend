@@ -1,40 +1,60 @@
 import { Container, Grid, Toolbar, Typography, Button, TextField } from '@mui/material';
-import React, { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import '../../styles/Main.css'
+import '../../styles/Main.css';
 import axios from 'axios';
 import { API_URL, API_URL_FOREIGN_API } from '../../api/api';
 
-
 const CheckPublic = () => {
-    const {id} = useParams();
+    const { id } = useParams();
     const [post, setPost] = useState(null);
-
+    const [status, setStatus] = useState(); // For the new status
+    const [comment, setComment] = useState(''); // For the comment
 
     useEffect(() => {
-        fetch(`${API_URL_FOREIGN_API}api_communities/communities/${id}`)
-            .then(res => res.json())
-            .then(data => setPost(data))
+        axios.get(`${API_URL_FOREIGN_API}api_communities/communities/${id}`)
+            .then(response => {
+                setPost(response.data);
+            })
+            .catch(error => {
+                console.error('There was an error fetching the data!', error);
+            });
     }, [id]);
 
     const formatDateTime = dateTimeString => {
         const dateObject = new Date(dateTimeString);
-    
-        const formattedDate = dateObject.toLocaleString('ru-RU', {
-          year: 'numeric',
-          month: 'numeric',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-        });
-    
-        return formattedDate;
-      };
 
+        const formattedDate = dateObject.toLocaleString('ru-RU', {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+        });
+
+        return formattedDate;
+    };
+
+    const handleStatusChange = newStatus => {
+        axios.patch(`${API_URL_FOREIGN_API}api_communities/communities/${id}/`, {
+            status: newStatus
+        })
+        .then(response => {
+            setStatus(newStatus);
+            alert('Status updated successfully');
+        })
+        .catch(error => {
+            console.error('There was an error updating the status!', error);
+        });
+    };
+
+    const handleCommentChange = event => {
+        setComment(event.target.value);
+    };
 
     return (
         <main>
@@ -70,15 +90,22 @@ const CheckPublic = () => {
                             <div className="Status-root">
                                 <Grid container spacing={4} justifyContent="center" mt={1}>
                                     <Grid item>
-                                        <Button variant="contained" color="success">Одобрено</Button>
+                                        <Button variant="contained" color="success" onClick={() => handleStatusChange(2)}>Одобрено</Button>
                                     </Grid>
                                     <Grid item>
-                                        <Button variant="contained" color="error">Неодобрено</Button>
+                                        <Button variant="contained" color="error" onClick={() => handleStatusChange(3)}>Неодобрено</Button>
                                     </Grid>
                                 </Grid>
                                 <Grid container justifyContent="center" mt={3}>
                                     <Grid item>
-                                        <TextField id="filled-basic" label="Введите комментарий" variant="filled" color="primary" />
+                                        <TextField 
+                                            id="filled-basic" 
+                                            label="Введите комментарий" 
+                                            variant="filled" 
+                                            color="primary" 
+                                            value={comment}
+                                            onChange={handleCommentChange}
+                                        />
                                     </Grid>
                                 </Grid>
                                 <Grid container justifyContent="center" mt={3} mb={3}>
@@ -92,8 +119,7 @@ const CheckPublic = () => {
                 </Grid>
             </Container>
         </main>
-    )
+    );
 }
 
-
-export {CheckPublic}
+export { CheckPublic };
