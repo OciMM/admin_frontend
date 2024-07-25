@@ -41,7 +41,7 @@ const CheckPublic = () => {
 
     const handleStatusChange = newStatus => {
         axios.patch(`${API_URL_FOREIGN_API}api_communities/communities/${id}/`, {
-            status: newStatus
+            status_of_check: newStatus
         })
         .then(response => {
             setStatus(newStatus);
