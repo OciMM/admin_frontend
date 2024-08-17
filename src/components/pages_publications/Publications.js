@@ -28,11 +28,11 @@ export default class Publications extends Component {
                                     <Button size="large" color="inherit">Настройки публикации</Button>
                                   </Link>
                                   </li>
-                                <li>
+                                {/* <li>
                                   <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/publications/reservations">
                                     <Button size="large" color="inherit">Бронь мест</Button>
                                   </Link>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                     </div>
